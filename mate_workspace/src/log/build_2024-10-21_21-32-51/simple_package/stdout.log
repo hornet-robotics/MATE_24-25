@@ -1,0 +1,28 @@
+running egg_info
+creating ../build/simple_package/simple_package.egg-info
+writing ../build/simple_package/simple_package.egg-info/PKG-INFO
+writing dependency_links to ../build/simple_package/simple_package.egg-info/dependency_links.txt
+writing requirements to ../build/simple_package/simple_package.egg-info/requires.txt
+writing top-level names to ../build/simple_package/simple_package.egg-info/top_level.txt
+writing manifest file '../build/simple_package/simple_package.egg-info/SOURCES.txt'
+reading manifest file '../build/simple_package/simple_package.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../build/simple_package/simple_package.egg-info/SOURCES.txt'
+running build
+running build_py
+creating /home/jbeta/Software/mate_software/mate_workspace/src/build/simple_package/build
+creating /home/jbeta/Software/mate_software/mate_workspace/src/build/simple_package/build/lib
+creating /home/jbeta/Software/mate_software/mate_workspace/src/build/simple_package/build/lib/simple_package
+copying simple_package/__init__.py -> /home/jbeta/Software/mate_software/mate_workspace/src/build/simple_package/build/lib/simple_package
+running install
+running install_lib
+creating /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/lib/python3.12/site-packages/simple_package
+copying /home/jbeta/Software/mate_software/mate_workspace/src/build/simple_package/build/lib/simple_package/__init__.py -> /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/lib/python3.12/site-packages/simple_package
+byte-compiling /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/lib/python3.12/site-packages/simple_package/__init__.py to __init__.cpython-312.pyc
+running install_data
+creating /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/share/ament_index
+creating /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/share/ament_index/resource_index
+creating /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/share/ament_index/resource_index/packages
+copying resource/simple_package -> /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/share/ament_index/resource_index/packages
+copying package.xml -> /home/jbeta/Software/mate_software/mate_workspace/src/install/simple_package/share/simple_package
+running install_egg_info

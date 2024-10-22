@@ -1,0 +1,15 @@
+LICENSE
+package.xml
+setup.cfg
+setup.py
+../build/simple_package/simple_package.egg-info/PKG-INFO
+../build/simple_package/simple_package.egg-info/SOURCES.txt
+../build/simple_package/simple_package.egg-info/dependency_links.txt
+../build/simple_package/simple_package.egg-info/requires.txt
+../build/simple_package/simple_package.egg-info/top_level.txt
+../build/simple_package/simple_package.egg-info/zip-safe
+resource/simple_package
+simple_package/__init__.py
+test/test_copyright.py
+test/test_flake8.py
+test/test_pep257.py

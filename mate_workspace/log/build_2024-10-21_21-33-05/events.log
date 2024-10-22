@@ -1,0 +1,94 @@
+[0.000000] (-) TimerEvent: {}
+[0.000446] (simple_package) JobQueued: {'identifier': 'simple_package', 'dependencies': OrderedDict()}
+[0.001684] (simple_package) JobStarted: {'identifier': 'simple_package'}
+[0.099324] (-) TimerEvent: {}
+[0.199916] (-) TimerEvent: {}
+[0.300516] (-) TimerEvent: {}
+[0.401068] (-) TimerEvent: {}
+[0.501656] (-) TimerEvent: {}
+[0.602176] (-) TimerEvent: {}
+[0.702736] (-) TimerEvent: {}
+[0.803258] (-) TimerEvent: {}
+[0.903920] (-) TimerEvent: {}
+[1.004646] (-) TimerEvent: {}
+[1.105225] (-) TimerEvent: {}
+[1.205884] (-) TimerEvent: {}
+[1.306512] (-) TimerEvent: {}
+[1.407029] (-) TimerEvent: {}
+[1.507617] (-) TimerEvent: {}
+[1.608146] (-) TimerEvent: {}
+[1.708723] (-) TimerEvent: {}
+[1.809238] (-) TimerEvent: {}
+[1.909815] (-) TimerEvent: {}
+[2.010375] (-) TimerEvent: {}
+[2.110914] (-) TimerEvent: {}
+[2.211469] (-) TimerEvent: {}
+[2.311966] (-) TimerEvent: {}
+[2.412543] (-) TimerEvent: {}
+[2.513049] (-) TimerEvent: {}
+[2.613614] (-) TimerEvent: {}
+[2.714145] (-) TimerEvent: {}
+[2.814743] (-) TimerEvent: {}
+[2.915244] (-) TimerEvent: {}
+[3.015816] (-) TimerEvent: {}
+[3.116369] (-) TimerEvent: {}
+[3.217028] (-) TimerEvent: {}
+[3.317995] (-) TimerEvent: {}
+[3.343484] (simple_package) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/simple_package', 'build', '--build-base', '/home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build', 'install', '--record', '/home/jbeta/Software/mate_software/mate_workspace/build/simple_package/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/jbeta/Software/mate_software/mate_workspace/src/simple_package', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'jbeta', 'SSH_CLIENT': '10.0.0.160 58409 22', 'XDG_SESSION_TYPE': 'tty', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/opt/ros/jazzy/opt/rviz_ogre_vendor/lib:/opt/ros/jazzy/lib/aarch64-linux-gnu:/opt/ros/jazzy/opt/gz_math_vendor/lib:/opt/ros/jazzy/opt/gz_utils_vendor/lib:/opt/ros/jazzy/opt/gz_cmake_vendor/lib:/opt/ros/jazzy/lib', 'HOME': '/home/jbeta', 'OLDPWD': '/home/jbeta/Software/mate_software/mate_workspace/src', 'SSH_TTY': '/dev/pts/1', 'ROS_PYTHON_VERSION': '3', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1002/bus', 'DEBUGINFOD_URLS': 'https://debuginfod.ubuntu.com', 'COLCON_PREFIX_PATH': '/home/jbeta/Software/mate_software/mate_workspace/install', 'ROS_DISTRO': 'jazzy', 'LOGNAME': 'jbeta', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'TERM': 'xterm-256color', 'XDG_SESSION_ID': '20', 'PATH': '/opt/ros/jazzy/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin', 'XDG_RUNTIME_DIR': '/run/user/1002', 'LANG': 'C.UTF-8', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=00:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.avif=01;35:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:*~=00;90:*#=00;90:*.bak=00;90:*.crdownload=00;90:*.dpkg-dist=00;90:*.dpkg-new=00;90:*.dpkg-old=00;90:*.dpkg-tmp=00;90:*.old=00;90:*.orig=00;90:*.part=00;90:*.rej=00;90:*.rpmnew=00;90:*.rpmorig=00;90:*.rpmsave=00;90:*.swp=00;90:*.tmp=00;90:*.ucf-dist=00;90:*.ucf-new=00;90:*.ucf-old=00;90:', 'AMENT_PREFIX_PATH': '/opt/ros/jazzy', 'SHELL': '/bin/bash', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'ROS_AUTOMATIC_DISCOVERY_RANGE': 'SUBNET', 'PWD': '/home/jbeta/Software/mate_software/mate_workspace/build/simple_package', 'SSH_CONNECTION': '10.0.0.160 58409 10.0.0.146 22', 'XDG_DATA_DIRS': '/usr/share/gnome:/usr/local/share:/usr/share:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/jbeta/Software/mate_software/mate_workspace/build/simple_package/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/jbeta/Software/mate_software/mate_workspace/install/simple_package/lib/python3.12/site-packages:/opt/ros/jazzy/lib/python3.12/site-packages', 'COLCON': '1', 'CMAKE_PREFIX_PATH': '/opt/ros/jazzy/opt/gz_math_vendor:/opt/ros/jazzy/opt/gz_utils_vendor:/opt/ros/jazzy/opt/gz_cmake_vendor'}, 'shell': False}
+[3.418145] (-) TimerEvent: {}
+[3.518812] (-) TimerEvent: {}
+[3.619565] (-) TimerEvent: {}
+[3.720118] (-) TimerEvent: {}
+[3.820707] (-) TimerEvent: {}
+[3.921208] (-) TimerEvent: {}
+[4.021742] (-) TimerEvent: {}
+[4.122240] (-) TimerEvent: {}
+[4.222778] (-) TimerEvent: {}
+[4.323308] (-) TimerEvent: {}
+[4.423805] (-) TimerEvent: {}
+[4.452966] (simple_package) StdoutLine: {'line': b'running egg_info\n'}
+[4.454285] (simple_package) StdoutLine: {'line': b'creating ../../build/simple_package/simple_package.egg-info\n'}
+[4.523944] (-) TimerEvent: {}
+[4.531255] (simple_package) StdoutLine: {'line': b'writing ../../build/simple_package/simple_package.egg-info/PKG-INFO\n'}
+[4.532425] (simple_package) StdoutLine: {'line': b'writing dependency_links to ../../build/simple_package/simple_package.egg-info/dependency_links.txt\n'}
+[4.533226] (simple_package) StdoutLine: {'line': b'writing requirements to ../../build/simple_package/simple_package.egg-info/requires.txt\n'}
+[4.533805] (simple_package) StdoutLine: {'line': b'writing top-level names to ../../build/simple_package/simple_package.egg-info/top_level.txt\n'}
+[4.534316] (simple_package) StdoutLine: {'line': b"writing manifest file '../../build/simple_package/simple_package.egg-info/SOURCES.txt'\n"}
+[4.624080] (-) TimerEvent: {}
+[4.692513] (simple_package) StdoutLine: {'line': b"reading manifest file '../../build/simple_package/simple_package.egg-info/SOURCES.txt'\n"}
+[4.693492] (simple_package) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[4.695499] (simple_package) StdoutLine: {'line': b"writing manifest file '../../build/simple_package/simple_package.egg-info/SOURCES.txt'\n"}
+[4.696117] (simple_package) StdoutLine: {'line': b'running build\n'}
+[4.696649] (simple_package) StdoutLine: {'line': b'running build_py\n'}
+[4.697070] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build\n'}
+[4.697580] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build/lib\n'}
+[4.698091] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build/lib/simple_package\n'}
+[4.698595] (simple_package) StdoutLine: {'line': b'copying simple_package/__init__.py -> /home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build/lib/simple_package\n'}
+[4.699388] (simple_package) StdoutLine: {'line': b'running install\n'}
+[4.722773] (simple_package) StdoutLine: {'line': b'running install_lib\n'}
+[4.724246] (-) TimerEvent: {}
+[4.802147] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/lib/python3.12/site-packages/simple_package\n'}
+[4.802823] (simple_package) StdoutLine: {'line': b'copying /home/jbeta/Software/mate_software/mate_workspace/build/simple_package/build/lib/simple_package/__init__.py -> /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/lib/python3.12/site-packages/simple_package\n'}
+[4.805248] (simple_package) StdoutLine: {'line': b'byte-compiling /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/lib/python3.12/site-packages/simple_package/__init__.py to __init__.cpython-312.pyc\n'}
+[4.806589] (simple_package) StdoutLine: {'line': b'running install_data\n'}
+[4.807154] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/share/ament_index\n'}
+[4.807737] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/share/ament_index/resource_index\n'}
+[4.808187] (simple_package) StdoutLine: {'line': b'creating /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/share/ament_index/resource_index/packages\n'}
+[4.808686] (simple_package) StdoutLine: {'line': b'copying resource/simple_package -> /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/share/ament_index/resource_index/packages\n'}
+[4.809150] (simple_package) StdoutLine: {'line': b'copying package.xml -> /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/share/simple_package\n'}
+[4.809822] (simple_package) StdoutLine: {'line': b'running install_egg_info\n'}
+[4.824378] (-) TimerEvent: {}
+[4.893383] (simple_package) StdoutLine: {'line': b'Copying ../../build/simple_package/simple_package.egg-info to /home/jbeta/Software/mate_software/mate_workspace/install/simple_package/lib/python3.12/site-packages/simple_package-0.0.0-py3.12.egg-info\n'}
+[4.898075] (simple_package) StdoutLine: {'line': b'running install_scripts\n'}
+[4.924516] (-) TimerEvent: {}
+[5.025030] (-) TimerEvent: {}
+[5.125600] (-) TimerEvent: {}
+[5.226115] (-) TimerEvent: {}
+[5.326657] (-) TimerEvent: {}
+[5.427155] (-) TimerEvent: {}
+[5.493256] (simple_package) StdoutLine: {'line': b"writing list of installed files to '/home/jbeta/Software/mate_software/mate_workspace/build/simple_package/install.log'\n"}
+[5.527459] (-) TimerEvent: {}
+[5.628372] (-) TimerEvent: {}
+[5.633366] (simple_package) CommandEnded: {'returncode': 0}
+[5.687835] (simple_package) JobEnded: {'identifier': 'simple_package', 'rc': 0}
+[5.690659] (-) EventReactorShutdown: {}
