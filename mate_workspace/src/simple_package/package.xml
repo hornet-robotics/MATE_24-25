@@ -3,9 +3,13 @@
 <package format="3">
   <name>simple_package</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="jbeta@gmail.com">jbeta</maintainer>
+  <description>simple demonstration of publisher and subscriber nodes using topic</description>
+  <maintainer email="null">Competitive Robotics Club at Sac State</maintainer>
   <license>Apache-2.0</license>
+
+  <!-- dependencies for publisher_node-->
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

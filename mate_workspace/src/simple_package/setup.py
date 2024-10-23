@@ -13,13 +13,15 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='jbeta',
-    maintainer_email='jbeta@gmail.com',
-    description='TODO: Package description',
+    maintainer='Competitive Robotics Club at Sac State',
+    maintainer_email='null',
+    description='simple demonstration of publisher and subscriber nodes using topic',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'talker = simple_package.publisher_member_function:main',
+            'listener = simple_package.subscriber_member_function:main',
         ],
     },
 )
