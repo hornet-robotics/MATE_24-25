@@ -14,13 +14,14 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='jrai',
-    maintainer_email='jrai@todo.todo',
+    maintainer_email='raijashan17@gmail.com',
     description='TODO: Package description',
     license='Apache-2.0',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'joystick_node = joystick_module.joystick_node:main'
+            'joystick_publisher = joystick_module.joystick_publisher:main',
+            'joystick_subscriber = joystick_module.joystick_subscriber:main',
         ],
     },
 )

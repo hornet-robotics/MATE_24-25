@@ -4,8 +4,12 @@
   <name>joystick_module</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
-  <maintainer email="jrai@todo.todo">jrai</maintainer>
+  <maintainer email="raijashan17@gmail.com">jrai</maintainer>
   <license>Apache-2.0</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
+  <exec_depend>pygame</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>
