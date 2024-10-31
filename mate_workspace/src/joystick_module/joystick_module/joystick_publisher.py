@@ -8,7 +8,7 @@ class PublisherNode(Node):
 
     def __init__(self):
         super().__init__('publisher_node') # run Node constructor
-        self.publisher_ = self.create_publisher(String, 'first_topic', 10) # publish to topic named first_topic
+        self.publisher_ = self.create_publisher(String, 'joystick_topic', 10) # publish to topic named first_topic
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         self.i = 0
