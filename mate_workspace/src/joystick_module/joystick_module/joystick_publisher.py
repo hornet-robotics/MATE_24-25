@@ -1,39 +1,42 @@
+import pygame
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import String
+from std_msgs.msg import Float32MultiArray
 
 
 class PublisherNode(Node):
 
     def __init__(self):
         super().__init__('publisher_node') # run Node constructor
-        self.publisher_ = self.create_publisher(String, 'joystick_topic', 10) # publish to topic named first_topic
+        self.publisher_ = self.create_publisher(Float32MultiArray, 'joystick_topic', 10) # publish to topic named first_topic
         timer_period = 0.5  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
-        self.i = 0
-        self.pygame.init()
-        self.pygame.joystick.init()
-        joystick = self.pygame.joystick.Joystick(0)
-        joystick.init()
+        #self.i = 0
+        pygame.init()
+        pygame.joystick.init()
+        self.joystick = pygame.joystick.Joystick(0)
+        self.joystick.init()
 
     def timer_callback(self):
-        self.pygame.event.pump()
+        pygame.event.pump()
+        result= [] #Format [Left_x,Left_y,Right_x,Right_y]
         left_stick_x = self.joystick.get_axis(0)  # Left stick horizontal
+        result.append(left_stick_x)
         left_stick_y = self.joystick.get_axis(1)  # Left stick vertical
+        result.append(left_stick_y)
 
         # Get the X and Y axes of the right stick
-        right_stick_x = self.joystick.get_axis(2)  # Right stick horizontal
-        right_stick_y = self.joystick.get_axis(3)  # Right stick vertical
-        msg1 = String()
-        msg2 = String()
-        msg1.data = f"Left Stick:  X: {left_stick_x:.2f}, Y: {left_stick_y:.2f}"
-        self.publisher_.publish(msg1)
-        self.get_logger().info('Publishing: "%s"' % msg1.data)
-        msg2.data = f"Right Stick: X: {right_stick_x:.2f}, Y: {right_stick_y:.2f}"
-        self.publisher_.publish(msg2)
-        self.get_logger().info('Publishing: "%s"' % msg2.data)
-        self.i += 1
+        right_stick_x = self.joystick.get_axis(3)  # Right stick horizontal
+        result.append(right_stick_x)
+        right_stick_y = self.joystick.get_axis(4)  # Right stick vertical
+        result.append(right_stick_y)
+        msg = Float32MultiArray()
+        msg.data = result
+        self.publisher_.publish(msg)
+        # display message sent
+        self.get_logger().info(f'Publishing: {msg.data}')
+        #self.i += 1
 
 
 def main(args=None):
