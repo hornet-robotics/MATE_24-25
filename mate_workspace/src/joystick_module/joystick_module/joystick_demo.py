@@ -25,8 +25,8 @@ else:
             left_stick_y = joystick.get_axis(1)  # Left stick vertical
 
             # Get the X and Y axes of the right stick
-            right_stick_x = joystick.get_axis(2)  # Right stick horizontal
-            right_stick_y = joystick.get_axis(3)  # Right stick vertical
+            right_stick_x = joystick.get_axis(3)  # Right stick horizontal
+            right_stick_y = joystick.get_axis(4)  # Right stick vertical
 
             # Print the directions
             print(f"Left Stick:  X: {left_stick_x:.2f}, Y: {left_stick_y:.2f}")
