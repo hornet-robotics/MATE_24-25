@@ -43,14 +43,16 @@ class VectorDrive(Node):
 
         #          front
         #           +x
-        #     m0 //----\\ m3
-        #  +y      ----
-        #     m1 \\----// m2
+        #     m0 //--m5--\\ m3
+        #  +y       ----
+        #     m1 \\--m4--// m2
 
         m0 = forward_back - strafe -(2 * self.radius * yaw)
         m1 = forward_back + strafe -(2 * self.radius * yaw)
         m2 = forward_back + strafe +(2 * self.radius * yaw)
         m3 = forward_back - strafe +(2 * self.radius * yaw)
+        m4 = up_down - (2 * self.radius * pitch)
+        m5 = up_down + (2 * self.radius * pitch)
 
         # TODO add motor values to motors.setvalue
 
