@@ -47,7 +47,7 @@ class VectorDrive(Node):
         #  +y       ----
         #     m1 \\--m4--// m2
 
-        m0 = forward_back - strafe -(2 * self.radius * yaw)
+        m0 = forward_back - strafe -(2 * self.radius * yaw) # verify turning logic here
         m1 = forward_back + strafe -(2 * self.radius * yaw)
         m2 = forward_back + strafe +(2 * self.radius * yaw)
         m3 = forward_back - strafe +(2 * self.radius * yaw)
