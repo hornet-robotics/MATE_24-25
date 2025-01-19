@@ -3,6 +3,8 @@ from rclpy.node import Node
 
 from std_msgs.msg import String
 
+from gpiozero import LED
+
 
 class SubscriberNode(Node):
 
@@ -18,6 +20,12 @@ class SubscriberNode(Node):
     def listener_callback(self, msg):
         # display message received
         self.get_logger().info('I heard: "%s"' % msg.data)
+
+        led = LED(17)
+        if (msg.data % 2 == 0):
+            led.on()
+        else:
+            led.off()
 
 
 def main(args=None):
