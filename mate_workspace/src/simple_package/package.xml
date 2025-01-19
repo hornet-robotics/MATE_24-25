@@ -4,7 +4,7 @@
   <name>simple_package</name>
   <version>0.0.0</version>
   <description>simple demonstration of publisher and subscriber nodes using topic</description>
-  <maintainer email="null">Competitive Robotics Club at Sac State</maintainer>
+  <maintainer email="null@null.com">Competitive Robotics Club at Sac State</maintainer>
   <license>Apache-2.0</license>
 
   <!-- dependencies for publisher_node-->

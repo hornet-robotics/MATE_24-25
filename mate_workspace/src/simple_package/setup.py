@@ -14,7 +14,7 @@ setup(
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='Competitive Robotics Club at Sac State',
-    maintainer_email='null',
+    maintainer_email='null@null.com',
     description='simple demonstration of publisher and subscriber nodes using topic',
     license='Apache-2.0',
     tests_require=['pytest'],

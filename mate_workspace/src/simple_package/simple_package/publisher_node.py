@@ -16,7 +16,7 @@ class PublisherNode(Node):
     def timer_callback(self):
         # send message over topic
         msg = String()
-        msg.data = 'Hello World: %d' % self.i
+        msg.data = str(self.i)
         self.publisher_.publish(msg)
         # display message sent
         self.get_logger().info('Publishing: "%s"' % msg.data)
