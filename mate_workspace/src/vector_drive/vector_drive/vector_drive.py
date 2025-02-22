@@ -56,6 +56,33 @@ class VectorDrive(Node):
 
         # TODO set motor pwm values here
 
+        #ADDING SEGMENT TO CONVERT M0-M6 TO STRING, ADJUST PRECEDING ZEROES
+        #ADJUST SPACING TO MATCH NEEDED FORMAT, THEN CREATE FINAL STRING FOR
+        #OUTPUT/USAGE
+
+        convM0 = str(m0)
+        convM1 = str(m1)
+        convM2 = str(m2)
+        convM3 = str(m3)
+        convM4 = str(m4)
+        convM5 = str(m5)
+
+        zeroFix = [convM0, convM1, convM2, convM3, convM4, convM5]
+
+        for x in range(0, 5) :
+            temp =zeroFix[x]
+            if (len(temp) == 1) :
+                temp = "00" + temp
+            elif (len(temp) == 2) :
+                temp = "0" + temp
+
+            zeroFix[x] = temp
+
+        finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
+        print(finalOut) #comment this out in final iteration, used for testing
+
+
+
         self.get_logger().info('From joystick_topic I heard: "%s"' % msg.data)
 
 
