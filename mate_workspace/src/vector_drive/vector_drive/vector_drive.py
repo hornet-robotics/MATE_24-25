@@ -28,14 +28,15 @@ class VectorDrive(Node):
         right_trigger = msg.data[5]
 
         # scale to match pwm
-        pwm_scale = 255
+        pwm_scale = 127.5
+        centering_constant = 127.5 # add to values to make center the 0 value
         # 2d
-        forward_back = pwm_scale * joystick_left_y
-        strafe = pwm_scale * -joystick_left_x
-        yaw = pwm_scale * -joystick_right_x
+        forward_back = pwm_scale * joystick_left_y + centering_constant
+        strafe = (pwm_scale * -joystick_left_x) + centering_constant
+        yaw = (pwm_scale * -joystick_right_x) + centering_constant
         # 3d
-        up_down = pwm_scale * (right_trigger - left_trigger)
-        pitch = pwm_scale * joystick_right_y
+        up_down = pwm_scale * (right_trigger - left_trigger) + centering_constant
+        pitch = pwm_scale * joystick_right_y + centering_constant
 
         # give values to motors
 
@@ -47,12 +48,12 @@ class VectorDrive(Node):
         # counter-clockwise is positive for yaw rotation
         # nose up is positive in pitch rotation
 
-        m0 = forward_back - strafe - yaw
-        m1 = forward_back + strafe - yaw
-        m2 = forward_back - strafe + yaw
-        m3 = forward_back + strafe + yaw
-        m4 = up_down - pitch
-        m5 = up_down + pitch
+        m0 = int(forward_back - strafe - yaw)
+        m1 = int(forward_back + strafe - yaw)
+        m2 = int(forward_back - strafe + yaw)
+        m3 = int(forward_back + strafe + yaw)
+        m4 = int(up_down - pitch)
+        m5 = int(up_down + pitch)
 
         # TODO set motor pwm values here
 
