@@ -2,8 +2,8 @@
 
 const int STOP_VAL = 1500; // PWM signal value 1100 to 1900, 1500 to stop
 
-const int PIN_0 = 0;
-const int PIN_1 = 1;
+const int PIN_0 = 10;
+const int PIN_1 = 11;
 const int PIN_2 = 2;
 const int PIN_3 = 3;
 const int PIN_4 = 4;
@@ -16,7 +16,7 @@ Servo motors[] = {m0, m1, m2, m3, m4, m5};
 
 
 void setup() {
-  // Serial.begin(9600);
+  Serial.begin(9600);
 
   for(int i = 0; i < sizeof(motors) / sizeof(motors[0]); i++) {
     motors[i].attach(PINS[i]);
@@ -27,7 +27,7 @@ void setup() {
 }
 
 void loop() {
-  if(Serial.available()) {
+  if(Serial.available() > 0) {
     String input = Serial.readStringUntil('\n');
 
     // data will be sent in the following format: 000 000 000 000 000 000 
@@ -45,7 +45,7 @@ void loop() {
       motorPwm = input.substring(inputIndex, inputIndex + 3).toInt(); // get the 3 pwm digits
       motorMicroSec = convertToMicoSec(motorPwm);
       motors[i].writeMicroseconds(motorMicroSec); // set pwm frequency
-      printMotor(i, motorMicroSec);
+      // printMotor(i, motorMicroSec);
       inputIndex += 4; // shift 4 to get to next pwm entry
     }
   } 
