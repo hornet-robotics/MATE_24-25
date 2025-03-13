@@ -1,17 +1,10 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-<<<<<<<< HEAD:mate_workspace/src/vector_drive/package.xml
   <name>vector_drive</name>
   <version>0.0.0</version>
   <description>TODO: Package description</description>
   <maintainer email="jbeta02@gmail.com">jbeta</maintainer>
-========
-  <name>joystick_module</name>
-  <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="raijashan17@gmail.com">jrai</maintainer>
->>>>>>>> Jashan-Joystick:mate_workspace/src/joystick_module/package.xml
   <license>Apache-2.0</license>
 
   <exec_depend>rclpy</exec_depend>
