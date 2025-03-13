@@ -2,6 +2,12 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import String
 
+import serial
+import time
+
+arduino_port = '/dev/ttyACM0'
+baud_rate = 9600
+
 class VectorDrive(Node):
 
     def __init__(self):
@@ -78,6 +84,18 @@ class VectorDrive(Node):
             zeroFix[x] = temp
 
         finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
+
+        try:
+            ser = serial.Serial(arduino_port, baud_rate)
+            #time.sleep(2)  # Allow time for the serial connection to initialize
+
+            data_to_send = finalOut + "\n"  # Include "\n" for end of line
+            ser.write(data_to_send.encode('utf-8'))
+            print(f"Sent: {data_to_send}")
+
+            ser.close()
+        except serial.SerialException as e:
+          print(f"Error: {e}")
 
         self.get_logger().info('From joystick_topic I heard: "%s"' % msg.data)
 
