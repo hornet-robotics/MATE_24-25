@@ -91,13 +91,15 @@ class VectorDrive(Node):
 
             data_to_send = finalOut + "\n"  # Include "\n" for end of line
             ser.write(data_to_send.encode('utf-8'))
-            print(f"Sent: {data_to_send}")
+            # print(f"Sent: {data_to_send}")
 
-            ser.close()
+            #ser.close()
+
         except serial.SerialException as e:
-          print(f"Error: {e}")
+            pass
+          # print(f"Error: {e}")
 
-        self.get_logger().info('From joystick_topic I heard: "%s"' % msg.data)
+        self.get_logger().info(f'From joystick_topic I heard : {msg.data} | data sent to Arduino : {finalOut}')
 
 
 def main(args=None):
