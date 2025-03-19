@@ -14,7 +14,6 @@ const int PINS[] = {PIN_0, PIN_1, PIN_2, PIN_3, PIN_4, PIN_5};
 Servo m0, m1, m2, m3, m4, m5;
 Servo motors[] = {m0, m1, m2, m3, m4, m5};
 
-
 void setup() {
   Serial.begin(9600);
 
@@ -27,28 +26,27 @@ void setup() {
 }
 
 void loop() {
-  if(Serial.available() > 0) {
-    String input = Serial.readStringUntil('\n');
+  while (Serial.available() == 0);
 
-    // data will be sent in the following format: 000 000 000 000 000 000 
-    // pwm value for a motor from 000 to 255
+  String input = Serial.readStringUntil('\n'); //"565 565 565 565 565 565";
 
-    int inputIndex = 0;
+  // data will be sent in the following format: 499 499 499 499 499 499 
+  // pwm value for a motor from 000 to 999
 
-    int motorPwm = 0;
-    int motorMicroSec = 0;
-    for (int i = 0; i < sizeof(motors) / sizeof(motors[0]); i++) {
-      if (inputIndex + 2 >= input.length()) {
-        break;
-      }
+  int inputIndex = 0;
 
-      motorPwm = input.substring(inputIndex, inputIndex + 3).toInt(); // get the 3 pwm digits
-      motorMicroSec = convertToMicoSec(motorPwm);
-      motors[i].writeMicroseconds(motorMicroSec); // set pwm frequency
-      // printMotor(i, motorMicroSec);
-      inputIndex += 4; // shift 4 to get to next pwm entry
+  int motorPwm = 0;
+  int motorMicroSec = 0;
+  for (int i = 0; i < sizeof(motors) / sizeof(motors[0]); i++) {
+    if (inputIndex + 2 >= input.length()) {
+      break;
     }
-  } 
+
+    motorPwm = input.substring(inputIndex, inputIndex + 3).toInt(); // get the 3 pwm digits
+    motorMicroSec = convertToMicoSec(motorPwm);
+    motors[i].writeMicroseconds(motorMicroSec); // set pwm frequency
+    inputIndex += 4; // shift 4 to get to next pwm entry
+  }
 }
 
 void printMotor(int motor, int speed) {
@@ -62,9 +60,9 @@ void printMotor(int motor, int speed) {
 int convertToMicoSec(int pwm) {
   // 1900 - 1100 = 800
   // 1100 is lowwer bounds, 1900 is upper bounds
-  // 255 is original pwm value from Pi
-  // x * 800/255 + 1100 = microsec value
-  float conversionFactor = 800 / (float) 255; // cast to avoid integer output
+  // 999 is original pwm value from Pi
+  // x * 800/999 + 1100 = microsec value
+  float conversionFactor = 800 / (float) 999; // cast to avoid integer output
   return (pwm * conversionFactor) + 1100;
 }
 

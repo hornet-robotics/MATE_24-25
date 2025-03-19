@@ -2,12 +2,12 @@ import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
 
-
 import serial
-import time
 
 arduino_port = '/dev/ttyACM0'
 baud_rate = 9600
+
+ser = serial.Serial(arduino_port, baud_rate)
 
 class VectorDrive(Node):
 
@@ -25,18 +25,38 @@ class VectorDrive(Node):
 
     def listener_callback(self, msg):
 
+        #            front
+        #             + y
+        #              |
+        #              |
+        #              |
+        #              |
+        #    ------------------ +x
+        #              |
+        #              |
+        #              |
+        #              |
+        # clockwise is positive for yaw rotation
+        # nose (front) up is positive in pitch rotation
+
+        #          front
+        #     m0 //--m4--\\ m3
+        #           ----
+        #     m1 \\--m5--// m2
+
+        # reverse y output to make up + instead of -
         joystick_left_x = msg.data[0]
-        joystick_left_y = msg.data[1]
+        joystick_left_y = -msg.data[1]
 
         joystick_right_x = msg.data[2]
-        joystick_right_y = msg.data[3]
+        joystick_right_y = -msg.data[3]
 
         left_trigger = msg.data[4]
         right_trigger = msg.data[5]
 
         # scale to match pwm
-        pwm_scale = 127.5
-        centering_constant = 127.5 # add to values to make center the 0 value
+        pwm_scale = 499.5
+        centering_constant = 499.5 # add to values to make center the 0 value
         # 2d
         forward_back = pwm_scale * joystick_left_y + centering_constant
         strafe = (pwm_scale * -joystick_left_x) + centering_constant
@@ -47,20 +67,12 @@ class VectorDrive(Node):
 
         # give values to motors
 
-        #          front
-        #           +x
-        #     m0 //--m5--\\ m3
-        #  +y       ----
-        #     m1 \\--m4--// m2
-        # counter-clockwise is positive for yaw rotation
-        # nose up is positive in pitch rotation
-
-        m0 = int(forward_back - strafe - yaw)
-        m1 = int(forward_back + strafe - yaw)
-        m2 = int(forward_back - strafe + yaw)
-        m3 = int(forward_back + strafe + yaw)
-        m4 = int(up_down - pitch)
-        m5 = int(up_down + pitch)
+        m0 = int(forward_back + strafe + yaw)
+        m1 = int(forward_back - strafe + yaw)
+        m2 = int(forward_back + strafe - yaw)
+        m3 = int(forward_back - strafe - yaw)
+        m4 = int(up_down + pitch)
+        m5 = int(up_down - pitch)
 
         #ADDING SEGMENT TO CONVERT M0-M5 TO STRING, ADJUST PRECEDING ZEROES
         #ADJUST SPACING TO MATCH NEEDED FORMAT, THEN CREATE FINAL STRING FOR
@@ -87,18 +99,13 @@ class VectorDrive(Node):
         finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
 
         try:
-            ser = serial.Serial(arduino_port, baud_rate)
-            #time.sleep(2)  # Allow time for the serial connection to initialize
 
             data_to_send = finalOut + "\n"  # Include "\n" for end of line
             ser.write(data_to_send.encode('utf-8'))
-            # print(f"Sent: {data_to_send}")
 
-            #ser.close()
 
-        except serial.SerialException as e:
-            pass
-          # print(f"Error: {e}")
+        except KeyboardInterrupt:
+            ser.close()
 
         self.get_logger().info(f'From joystick_topic I heard : {msg.data} | data sent to Arduino : {finalOut}')
 

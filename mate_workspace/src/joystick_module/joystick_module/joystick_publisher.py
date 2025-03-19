@@ -12,7 +12,7 @@ class PublisherNode(Node):
     def __init__(self):
         super().__init__('publisher_node') # run Node constructor
         self.publisher_ = self.create_publisher(Float32MultiArray, 'joystick_topic', 10) # publish to topic named first_topic
-        timer_period = 0.0000000001  # seconds
+        timer_period = 0  # seconds
         self.timer = self.create_timer(timer_period, self.timer_callback)
         pygame.init() 
         pygame.joystick.init()
