@@ -9,19 +9,19 @@ baud_rate = 9600
 
 ser = serial.Serial(arduino_port, baud_rate)
 
+
 class VectorDrive(Node):
 
     def __init__(self):
-        super().__init__('vector_drive_node') # run Node constructor
+        super().__init__('vector_drive_node')  # run Node constructor
 
         # setup subscriber
         self.subscription = self.create_subscription(
             Float32MultiArray,
-            'joystick_topic', # subscribe to joystick topic
+            'joystick_topic',  # subscribe to joystick topic
             self.listener_callback,
             10)
         self.subscription  # prevent unused variable warning
-
 
     def listener_callback(self, msg):
 
@@ -56,27 +56,27 @@ class VectorDrive(Node):
 
         # scale to match pwm
         pwm_scale = 499.5
-        centering_constant = 499.5 # add to values to make center the 0 value
+        centering_constant = 499.5  # add to values to make center the 0 value
         # 2d
-        forward_back = pwm_scale * joystick_left_y + centering_constant
-        strafe = (pwm_scale * -joystick_left_x) + centering_constant
-        yaw = (pwm_scale * -joystick_right_x) + centering_constant
+        forward_back = joystick_left_y
+        strafe = joystick_left_x
+        yaw = joystick_right_x
         # 3d
-        up_down = pwm_scale * (right_trigger - left_trigger) + centering_constant
-        pitch = pwm_scale * joystick_right_y + centering_constant
+        up_down = right_trigger - left_trigger
+        pitch = joystick_right_y
 
         # give values to motors
+        #  scale from joystick sya to pwm sys   clip correct range    center is true 0
+        m0 = int(pwm_scale * self.clip(forward_back + strafe + yaw) + centering_constant)
+        m1 = int(pwm_scale * self.clip(forward_back - strafe + yaw) + centering_constant)
+        m2 = int(pwm_scale * self.clip(forward_back + strafe - yaw) + centering_constant)
+        m3 = int(pwm_scale * self.clip(forward_back - strafe - yaw) + centering_constant)
+        m4 = int(pwm_scale * self.clip(up_down + pitch) + centering_constant)
+        m5 = int(pwm_scale * self.clip(up_down - pitch) + centering_constant)
 
-        m0 = int(forward_back + strafe + yaw)
-        m1 = int(forward_back - strafe + yaw)
-        m2 = int(forward_back + strafe - yaw)
-        m3 = int(forward_back - strafe - yaw)
-        m4 = int(up_down + pitch)
-        m5 = int(up_down - pitch)
-
-        #ADDING SEGMENT TO CONVERT M0-M5 TO STRING, ADJUST PRECEDING ZEROES
-        #ADJUST SPACING TO MATCH NEEDED FORMAT, THEN CREATE FINAL STRING FOR
-        #OUTPUT/USAGE
+        # ADDING SEGMENT TO CONVERT M0-M5 TO STRING, ADJUST PRECEDING ZEROES
+        # ADJUST SPACING TO MATCH NEEDED FORMAT, THEN CREATE FINAL STRING FOR
+        # OUTPUT/USAGE
 
         convM0 = str(m0)
         convM1 = str(m1)
@@ -89,14 +89,15 @@ class VectorDrive(Node):
 
         for x in range(0, 5):
             temp = zeroFix[x]
-            if (len(temp) == 1) :
+            if (len(temp) == 1):
                 temp = "00" + temp
-            elif (len(temp) == 2) :
+            elif (len(temp) == 2):
                 temp = "0" + temp
 
             zeroFix[x] = temp
 
-        finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
+        finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + \
+                   zeroFix[5]
 
         try:
 
@@ -107,7 +108,19 @@ class VectorDrive(Node):
         except KeyboardInterrupt:
             ser.close()
 
-        self.get_logger().info(f'From joystick_topic I heard : {msg.data} | data sent to Arduino : {finalOut}')
+        self.get_logger().info(
+            f'data sent to Arduino : {finalOut}')  # stop: 499 | max: 999(+), 000 (-) | move a little: 555 (+)
+
+    def clip(self, value):
+        min = -1
+        max = 1
+
+        if value < 0:
+            value = min
+        if value > max:
+            value = max
+
+        return value
 
 
 def main(args=None):

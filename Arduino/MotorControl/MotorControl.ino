@@ -28,7 +28,7 @@ void setup() {
 void loop() {
   while (Serial.available() == 0);
 
-  String input = Serial.readStringUntil('\n'); //"565 565 565 565 565 565";
+  String input = Serial.readStringUntil('\n'); //"555 555 555 555 555 555";
 
   // data will be sent in the following format: 499 499 499 499 499 499 
   // pwm value for a motor from 000 to 999
