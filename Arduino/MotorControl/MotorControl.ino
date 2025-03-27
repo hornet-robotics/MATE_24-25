@@ -2,12 +2,12 @@
 
 const int STOP_VAL = 1500; // PWM signal value 1100 to 1900, 1500 to stop
 
-const int PIN_0 = 10;
-const int PIN_1 = 11;
-const int PIN_2 = 2;
-const int PIN_3 = 3;
-const int PIN_4 = 4;
-const int PIN_5 = 5;
+const int PIN_0 = 3;
+const int PIN_1 = 5;
+const int PIN_2 = 6;
+const int PIN_3 = 9;
+const int PIN_4 = 10;
+const int PIN_5 = 11;
 
 const int PINS[] = {PIN_0, PIN_1, PIN_2, PIN_3, PIN_4, PIN_5};
 
