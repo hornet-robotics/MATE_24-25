@@ -21,7 +21,6 @@ class VectorDrive(Node):
             'joystick_topic',  # subscribe to joystick topic
             self.listener_callback,
             10)
-        self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
 
@@ -87,7 +86,7 @@ class VectorDrive(Node):
 
         zeroFix = [convM0, convM1, convM2, convM3, convM4, convM5]
 
-        for x in range(0, 5):
+        for x in range(0, 6):
             temp = zeroFix[x]
             if (len(temp) == 1):
                 temp = "00" + temp
@@ -96,8 +95,7 @@ class VectorDrive(Node):
 
             zeroFix[x] = temp
 
-        finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + \
-                   zeroFix[5]
+        finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
 
         try:
 
@@ -108,14 +106,13 @@ class VectorDrive(Node):
         except KeyboardInterrupt:
             ser.close()
 
-        self.get_logger().info(
-            f'data sent to Arduino : {finalOut}')  # stop: 499 | max: 999(+), 000 (-) | move a little: 555 (+)
+        self.get_logger().info(f'data sent to Arduino : {finalOut}')  # stop: 499 | max: 999(+), 000 (-) | move a little: 555 (+)
 
     def clip(self, value):
         min = -1
         max = 1
 
-        if value < 0:
+        if value < -1:
             value = min
         if value > max:
             value = max
