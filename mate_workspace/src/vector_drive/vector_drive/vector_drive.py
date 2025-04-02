@@ -112,7 +112,7 @@ class VectorDrive(Node):
         min = -1
         max = 1
 
-        if value < -1:
+        if value < min:
             value = min
         if value > max:
             value = max
