@@ -1,14 +1,15 @@
 import rclpy
 from rclpy.node import Node
 from std_msgs.msg import Float32MultiArray
-
 import serial
+from gpiozero import AngularServo
 
 arduino_port = '/dev/ttyACM0'
 baud_rate = 9600
 
 ser = serial.Serial(arduino_port, baud_rate)
-
+claw_gpio_pin = 12
+servo = AngularServo(claw_gpio_pin, min_angle=0, max_angle=90)
 
 class VectorDrive(Node):
 
@@ -21,6 +22,9 @@ class VectorDrive(Node):
             'joystick_topic',  # subscribe to joystick topic
             self.listener_callback,
             10)
+
+        self.ran = False # for claw state
+        self.is_claw_open = False
 
     def listener_callback(self, msg):
 
@@ -98,7 +102,6 @@ class VectorDrive(Node):
         finalOut = zeroFix[0] + " " + zeroFix[1] + " " + zeroFix[2] + " " + zeroFix[3] + " " + zeroFix[4] + " " + zeroFix[5]
 
         try:
-
             data_to_send = finalOut + "\n"  # Include "\n" for end of line
             ser.write(data_to_send.encode('utf-8'))
 
@@ -107,6 +110,11 @@ class VectorDrive(Node):
             ser.close()
 
         self.get_logger().info(f'data sent to Arduino : {finalOut}')  # stop: 499 | max: 999(+), 000 (-) | move a little: 555 (+)
+
+        # toggle claw open/close with the south button on the controller
+        joystick_a = msg.data[8]
+        self.handle_claw_state(joystick_a)
+            
 
     def clip(self, value):
         min = -1
@@ -118,6 +126,23 @@ class VectorDrive(Node):
             value = max
 
         return value
+
+    def handle_claw_state(self, button_state):
+        # - toggle open/close with sticky gamepad on one button
+        # - expected to run on Pi GPIO pins
+        # - Pi GPIO pins that have pwm capabilities: GPIO 12, 13, 14, 15
+        # - NOTE: angle settig on servo is not very accurate, also there is a lot of jittering
+
+        if self.ran is False and button_state == 1:
+            self.is_claw_open = not self.is_claw_open
+            if (self.is_claw_open):
+                servo.angle = 20
+            else:
+                servo.angle = 55
+            self.ran = True
+        
+        if self.ran is True and button_state == 0:
+            self.ran = False
 
 
 def main(args=None):
