@@ -2,7 +2,7 @@
 
 ## Mate Architecture
 <div align="center">
-    <img src="/media/mate_architecture.jpg" alt="mate_architecture" width="70%">
+    <img src="/media/mate_architecture.jpg" alt="mate_architecture" width="90%">
 </div>
 
 ## Joystick Module
