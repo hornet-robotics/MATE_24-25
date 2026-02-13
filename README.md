@@ -1,4 +1,10 @@
 # Mate Robotics Software 
+
+## Mate Architecture
+<div align="center">
+    <img src="/media/mate_architecture.jpg" alt="mate_architecture" width="25%">
+</div>
+
 ## Joystick Module
 
 The joystick module is used to get input of joysticks and buttons of a connected Playstation or Xbox controller. This module uses the pygame library. This information is recorded and stored in an array for manipulation.
